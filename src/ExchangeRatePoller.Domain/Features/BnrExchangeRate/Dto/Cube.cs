@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace ExchangeRatePoller.ConsoleApp.BnrFxRatesDtos
+namespace ExchangeRatePoller.Domain.Features.BnrExchangeRate.Dto
 {
     [XmlType("Cube")]
     public class Cube

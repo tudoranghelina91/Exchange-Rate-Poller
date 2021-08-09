@@ -1,4 +1,4 @@
-﻿namespace ExchangeRatePoller.ConsoleApp.BnrFxRatesDtos
+﻿namespace ExchangeRatePoller.Domain.Features.BnrExchangeRate.Dto
 {
     using System;
 

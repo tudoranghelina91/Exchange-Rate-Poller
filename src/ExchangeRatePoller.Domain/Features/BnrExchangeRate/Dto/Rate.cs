@@ -1,4 +1,4 @@
-﻿namespace ExchangeRatePoller.ConsoleApp.BnrFxRatesDtos
+﻿namespace ExchangeRatePoller.Domain.Features.BnrExchangeRate.Dto
 {
     using System.Xml.Serialization;
 
@@ -6,7 +6,7 @@
     {
         [XmlAttribute("currency")]
         public string Currency { get; set; }
-        
+
         [XmlAttribute("multiplier")]
         public decimal Multiplier { get; set; }
 

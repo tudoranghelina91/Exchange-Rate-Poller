@@ -1,4 +1,5 @@
-﻿using ExchangeRatePoller.ConsoleApp.BnrFxRatesDtos;
+﻿using ExchangeRatePoller.Domain.Features.BnrExchangeRate.Services;
+using ExchangeRatePoller.Domain.Features.BnrExchangeRate.Dto;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -6,9 +7,9 @@ using System.Xml.Serialization;
 
 namespace ExchangeRatePoller.ConsoleApp
 {
-    public class BnrExchangeRateService : IExchangeRateService
+    public class BnrExchangeRateAdapter : IExchangeRateAdapter
     {
-        public async Task<DataSet> GetBnrExchangeRates()
+        public async Task<DataSet> GetExchangeRates(int year = 0)
         {
             using (var httpClient = new HttpClient())
             {

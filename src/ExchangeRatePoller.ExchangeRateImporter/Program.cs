@@ -1,11 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Configuration;
-using ExchangeRatePoller.DataAccess;
+﻿using ExchangeRatePoller.DataAccess;
 using ExchangeRatePoller.Domain.Features.BnrExchangeRate.Services;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System;
+using System.Threading.Tasks;
 
-namespace ExchangeRatePoller.ConsoleApp
+namespace ExchangeRatePoller.ExchangeRateImporter
 {
     class Program
     {
