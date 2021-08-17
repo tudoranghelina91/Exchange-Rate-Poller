@@ -5,7 +5,7 @@ on:
     - main
 env:
   AZURE_FUNCTIONAPP_NAME: PollExchangeRates
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: ExchangeRatePoller.AzureFunction/publish
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: ./src/ExchangeRatePoller.AzureFunction
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 5.0.x
   WORKING_DIRECTORY: ExchangeRatePoller.AzureFunction
@@ -23,8 +23,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION_INPROC }}
-    - name: Add Certificates
-      run: dotnet dev-certs https --trust
     - name: Restore
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
     - name: Build
