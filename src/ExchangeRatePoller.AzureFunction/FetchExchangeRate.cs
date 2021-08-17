@@ -26,8 +26,6 @@ namespace ExchangeRatePoller.AzureFunction
         [Function("FetchExchangeRate")]
         public async Task Run([TimerTrigger("0 0 14 * * 1-5")] FunctionContext context)
         {
-            Console.WriteLine($"{DateTime.UtcNow.ToLocalTime()} - Getting BNR Exchange Rate");
-
             var dataSet = await _exchangeRateAdapter.GetExchangeRates();
 
             foreach (var cube in dataSet.Body.Cubes)
@@ -39,8 +37,6 @@ namespace ExchangeRatePoller.AzureFunction
 
                 await InsertExchangeRates(cubeDto, domainCubeRates);
             }
-
-            Console.WriteLine($"{DateTime.UtcNow.ToLocalTime()} - DONE Getting BNR Exchange Rate");
         }
 
         private async Task InsertExchangeRates(CubeDto cubeDto, IList<Domain.Features.BnrExchangeRate.Models.Rate> domainCubeRates)
