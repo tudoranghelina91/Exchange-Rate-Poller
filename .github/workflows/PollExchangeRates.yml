@@ -5,10 +5,10 @@ on:
     - main
 env:
   AZURE_FUNCTIONAPP_NAME: PollExchangeRates
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: ./src/ExchangeRatePoller.AzureFunction
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: ExchangeRatePoller.AzureFunction/publish
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 5.0.x
-  WORKING_DIRECTORY: ExchangeRatePoller.AzureFunction
+  WORKING_DIRECTORY: ./src/ExchangeRatePoller.AzureFunction
   DOTNET_CORE_VERSION_INPROC: 3.1.x
 jobs:
   build-and-deploy:
