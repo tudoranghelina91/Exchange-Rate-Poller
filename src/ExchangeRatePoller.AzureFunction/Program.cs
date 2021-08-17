@@ -22,6 +22,7 @@ namespace ExchangeRatePoller.AzureFunction
                     services.Configure<DbSettings>(options =>
                     {
                         var config = new ConfigurationBuilder()
+                            .AddJsonFile("local.settings.json")
                             .Build();
 
                         options.ConnectionString = config.GetConnectionString(

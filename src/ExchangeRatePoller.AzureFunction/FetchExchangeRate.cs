@@ -24,7 +24,7 @@ namespace ExchangeRatePoller.AzureFunction
         }
 
         [Function("FetchExchangeRate")]
-        public async Task Run([TimerTrigger("0 0 14 * * 1-5")] FunctionContext context)
+        public async Task Run([TimerTrigger("0 0 11 * * 1-5")] FunctionContext context)
         {
             var dataSet = await _exchangeRateAdapter.GetExchangeRates();
 
