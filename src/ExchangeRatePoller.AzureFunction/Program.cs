@@ -22,13 +22,12 @@ namespace ExchangeRatePoller.AzureFunction
                     services.Configure<DbSettings>(options =>
                     {
                         var config = new ConfigurationBuilder()
-                            .AddJsonFile("local.settings.json")
                             .Build();
 
                         options.ConnectionString = config.GetConnectionString(
-                            config.GetSection("Databases")["ExchangeRates"]);
+                            config.GetSection("DatabaseName").Value);
 
-                        options.DatabaseName = config.GetSection("Databases")["ExchangeRates"];
+                        options.DatabaseName = config.GetSection("DatabaseName").Value;
                     });
                 })
                 .Build();
