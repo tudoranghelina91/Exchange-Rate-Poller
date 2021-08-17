@@ -24,7 +24,7 @@ namespace ExchangeRatePoller.AzureFunction
         }
 
         [Function("FetchExchangeRate")]
-        public async Task Run([TimerTrigger("0 */5 * * * *")] FunctionContext context)
+        public async Task Run([TimerTrigger("0 0 14 * * 1-5")] FunctionContext context)
         {
             Console.WriteLine($"{DateTime.UtcNow.ToLocalTime()} - Getting BNR Exchange Rate");
 
