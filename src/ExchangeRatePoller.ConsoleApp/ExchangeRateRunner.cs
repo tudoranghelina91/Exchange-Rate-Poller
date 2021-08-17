@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using ExchangeRatePoller.DataAccess;
 using ExchangeRatePoller.DataAccess.Features.BnrExchangeRate.Dto;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace ExchangeRatePoller.ConsoleApp

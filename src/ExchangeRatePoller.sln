@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeRatePoller.Domain",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeRatePoller.DataAccess", "ExchangeRatePoller.DataAccess\ExchangeRatePoller.DataAccess.csproj", "{78766A06-7606-4F65-8C61-C61FF8385DBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeRatePoller.ExchangeRateImporter", "ExchangeRatePoller.ExchangeRateImporter\ExchangeRatePoller.ExchangeRateImporter.csproj", "{048DE2EC-A202-4874-8E48-48CB01962BEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeRatePoller.ExchangeRateImporter", "ExchangeRatePoller.ExchangeRateImporter\ExchangeRatePoller.ExchangeRateImporter.csproj", "{048DE2EC-A202-4874-8E48-48CB01962BEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeRatePoller.AzureFunction", "ExchangeRatePoller.AzureFunction\ExchangeRatePoller.AzureFunction.csproj", "{B3799E86-5FB9-448C-A54A-AC76A25021AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{048DE2EC-A202-4874-8E48-48CB01962BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{048DE2EC-A202-4874-8E48-48CB01962BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{048DE2EC-A202-4874-8E48-48CB01962BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3799E86-5FB9-448C-A54A-AC76A25021AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3799E86-5FB9-448C-A54A-AC76A25021AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3799E86-5FB9-448C-A54A-AC76A25021AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3799E86-5FB9-448C-A54A-AC76A25021AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

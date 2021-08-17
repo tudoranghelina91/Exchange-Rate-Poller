@@ -1,31 +1,28 @@
-﻿using ExchangeRatePoller.DataAccess;
+using ExchangeRatePoller.DataAccess;
 using ExchangeRatePoller.Domain.Features.BnrExchangeRate.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Threading.Tasks;
 
-namespace ExchangeRatePoller.ExchangeRateImporter
+namespace ExchangeRatePoller.AzureFunction
 {
-    class Program
+    public class Program
     {
-        static Task Main(string[] args) =>
-            CreateHostBuilder(args).Build().RunAsync();
-
-        static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+        public static void Main()
+        {
+            var host = new HostBuilder()
+                .ConfigureFunctionsWorkerDefaults()
                 .ConfigureServices((services) =>
                 {
                     services
                         .AddTransient<IExchangeRateRepository, ExchangeRateRepository>()
                         .AddTransient<IExchangeRateAdapter, BnrExchangeRateAdapter>()
-                        .AddAutoMapper(typeof(ExchangeRateMappingProfile))
-                        .AddHostedService<ExchangeRateRunner>();
+                        .AddAutoMapper(typeof(ExchangeRateMappingProfile));
 
                     services.Configure<DbSettings>(options =>
                     {
                         var config = new ConfigurationBuilder()
-                            .AddJsonFile("Config/appsettings.json")
+                            .AddJsonFile("local.settings.json")
                             .Build();
 
                         options.ConnectionString = config.GetConnectionString(
@@ -33,6 +30,10 @@ namespace ExchangeRatePoller.ExchangeRateImporter
 
                         options.DatabaseName = config.GetSection("Databases")["ExchangeRates"];
                     });
-                });
+                })
+                .Build();
+
+            host.Run();
+        }
     }
 }
