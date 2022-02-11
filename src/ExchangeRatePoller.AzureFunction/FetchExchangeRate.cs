@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -24,7 +23,7 @@ namespace ExchangeRatePoller.AzureFunction
         }
 
         [Function("FetchExchangeRate")]
-        public async Task Run([TimerTrigger("0 0 11 * * 1-5")] FunctionContext context)
+        public async Task Run([TimerTrigger("0 0 11 * * 1-5")] TimerInfo timer)
         {
             var dataSet = await _exchangeRateAdapter.GetExchangeRates();
 
