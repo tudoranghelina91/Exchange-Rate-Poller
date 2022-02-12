@@ -5,7 +5,8 @@ using ExchangeRatePoller.DataAccess;
 using ExchangeRatePoller.DataAccess.Features.BnrExchangeRate.Dto;
 using ExchangeRatePoller.Domain.Features.BnrExchangeRate.Dto;
 using ExchangeRatePoller.Domain.Features.BnrExchangeRate.Services;
-using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Extensions.Logging;
 
 namespace ExchangeRatePoller.AzureFunction
 {
@@ -22,9 +23,14 @@ namespace ExchangeRatePoller.AzureFunction
             this._exchangeRateRepository = exchangeRateRepository;
         }
 
-        [Function("FetchExchangeRate")]
-        public async Task Run([TimerTrigger("0 0 11 * * 1-5")] TimerInfo timer)
+        [FunctionName("FetchExchangeRate")]
+        public async Task Run([TimerTrigger("0 0 11 * * 1-5")] TimerInfo timer, ILogger logger)
         {
+            if (timer.IsPastDue)
+            {
+                logger.LogInformation("Timer is past due");
+            }
+
             var dataSet = await _exchangeRateAdapter.GetExchangeRates();
 
             foreach (var cube in dataSet.Body.Cubes)
