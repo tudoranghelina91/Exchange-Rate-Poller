@@ -15,16 +15,16 @@ namespace ExchangeRatePoller.AzureFunction
             builder.Services
                 .AddTransient<IExchangeRateRepository, ExchangeRateRepository>()
                 .AddTransient<IExchangeRateAdapter, BnrExchangeRateAdapter>()
+                .AddAutoMapper(typeof(ExchangeRateMappingProfile))
                 .Configure<DbSettings>(options =>
                 {
                     var config = new ConfigurationBuilder()
-                        .AddJsonFile("local.settings.json")
+                        .AddJsonFile("local.settings.json", true)
                         .Build();
 
                     options.ConnectionString = config.GetConnectionString("ExchangeRates");
                     options.DatabaseName = "ExchangeRates";
-                })
-                .AddAutoMapper(typeof(ExchangeRateMappingProfile));
+                });
         }
     }
 }
