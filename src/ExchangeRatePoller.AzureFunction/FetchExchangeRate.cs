@@ -24,7 +24,7 @@ namespace ExchangeRatePoller.AzureFunction
         }
 
         [FunctionName("FetchExchangeRate")]
-        public async Task Run([TimerTrigger("0 0 11 * * 1-5")] TimerInfo timer, ILogger logger)
+        public async Task Run([TimerTrigger("0 */5 * * * *")] TimerInfo timer, ILogger logger)
         {
             if (timer.IsPastDue)
             {
