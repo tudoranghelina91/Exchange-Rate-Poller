@@ -4,6 +4,7 @@ using ExchangeRatePoller.Domain.Features.BnrExchangeRate.Services;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 [assembly: FunctionsStartup(typeof(Startup))]
 namespace ExchangeRatePoller.AzureFunction
@@ -22,9 +23,13 @@ namespace ExchangeRatePoller.AzureFunction
                         .AddJsonFile("local.settings.json", true)
                         .Build();
 
-                    options.ConnectionString = config.GetConnectionStringOrSetting("ExchangeRates");
-
+                    options.ConnectionString = config.GetConnectionString("ExchangeRates");
                     options.DatabaseName = "ExchangeRates";
+                    
+                    if (string.IsNullOrWhiteSpace(options.ConnectionString))
+                    {
+                        options.ConnectionString = Environment.GetEnvironmentVariable("ExchangeRates");
+                    }
                 });
         }
     }
