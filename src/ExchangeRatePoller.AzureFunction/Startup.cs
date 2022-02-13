@@ -22,7 +22,8 @@ namespace ExchangeRatePoller.AzureFunction
                         .AddJsonFile("local.settings.json", true)
                         .Build();
 
-                    options.ConnectionString = config.GetConnectionString("ExchangeRates");
+                    options.ConnectionString = config.GetConnectionStringOrSetting("ExchangeRates");
+
                     options.DatabaseName = "ExchangeRates";
                 });
         }
