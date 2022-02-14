@@ -50,7 +50,7 @@ namespace ExchangeRatePoller.ExchangeRateImporter
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             Console.WriteLine("Starting Bnr Importer");
-            for (int i = 2005; i <= 2021; i++)
+            for (int i = 2005; i <= DateTime.UtcNow.Year; i++)
             {
                 Console.WriteLine($"{DateTime.UtcNow.ToLocalTime()} - Getting BNR Exchange Rate for {i}");
                 var dataSet = await _exchangeRateService.GetExchangeRates(i);
