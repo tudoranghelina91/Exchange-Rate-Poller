@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using ExchangeRatePoller.DataAccess;
-using ExchangeRatePoller.DataAccess.Features.BnrExchangeRate.Dto;
-using ExchangeRatePoller.Domain.Features.BnrExchangeRate.Dto;
-using ExchangeRatePoller.Domain.Features.BnrExchangeRate.Services;
+using ExchangeRate.DataAccess;
+using ExchangeRate.Dto;
+using ExchangeRate.Domain.Dto;
+using ExchangeRate.Domain.Services;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 
@@ -35,8 +35,8 @@ namespace ExchangeRatePoller.AzureFunction
 
             foreach (var cube in dataSet.Body.Cubes)
             {
-                var domainCube = this._mapper.Map<Cube, Domain.Features.BnrExchangeRate.Models.Cube>(cube);
-                var cubeDto = this._mapper.Map<Domain.Features.BnrExchangeRate.Models.Cube, CubeDto>(domainCube);
+                var domainCube = this._mapper.Map<Cube, ExchangeRate.Domain.Models.Cube>(cube);
+                var cubeDto = this._mapper.Map<ExchangeRate.Domain.Models.Cube, CubeDto>(domainCube);
 
                 var domainCubeRates = domainCube.Rates;
 
@@ -44,7 +44,7 @@ namespace ExchangeRatePoller.AzureFunction
             }
         }
 
-        private async Task InsertExchangeRates(CubeDto cubeDto, IList<Domain.Features.BnrExchangeRate.Models.Rate> domainCubeRates)
+        private async Task InsertExchangeRates(CubeDto cubeDto, IList<ExchangeRate.Domain.Models.Rate> domainCubeRates)
         {
             for (int i = 0; i < domainCubeRates.Count; i++)
             {
@@ -52,7 +52,7 @@ namespace ExchangeRatePoller.AzureFunction
 
                 if (currency == null)
                 {
-                    currency = this._mapper.Map<Domain.Features.BnrExchangeRate.Models.Currency, CurrencyDto>(domainCubeRates[i].Currency);
+                    currency = this._mapper.Map<ExchangeRate.Domain.Models.Currency, CurrencyDto>(domainCubeRates[i].Currency);
                     await _exchangeRateRepository.InsertCurrency(currency);
                 }
 

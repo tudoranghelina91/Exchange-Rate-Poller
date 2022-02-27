@@ -1,5 +1,5 @@
-﻿using ExchangeRatePoller.Domain.Features.BnrExchangeRate.Services;
-using ExchangeRatePoller.Domain.Features.BnrExchangeRate.Dto;
+﻿using ExchangeRate.Domain.Services;
+using ExchangeRate.Domain.Dto;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;

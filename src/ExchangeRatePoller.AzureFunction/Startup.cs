@@ -1,10 +1,11 @@
 ﻿using ExchangeRatePoller.AzureFunction;
-using ExchangeRatePoller.DataAccess;
-using ExchangeRatePoller.Domain.Features.BnrExchangeRate.Services;
+using ExchangeRate.DataAccess;
+using ExchangeRate.Domain.Services;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using ExchangeRate.DataAccess.Config;
 
 [assembly: FunctionsStartup(typeof(Startup))]
 namespace ExchangeRatePoller.AzureFunction
