@@ -1,5 +1,6 @@
-﻿using ExchangeRatePoller.DataAccess;
-using ExchangeRatePoller.Domain.Features.BnrExchangeRate.Services;
+﻿using ExchangeRate.DataAccess;
+using ExchangeRate.DataAccess.Config;
+using ExchangeRate.Domain.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

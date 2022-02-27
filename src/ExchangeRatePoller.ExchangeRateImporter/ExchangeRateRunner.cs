@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using ExchangeRatePoller.DataAccess;
-using ExchangeRatePoller.DataAccess.Features.BnrExchangeRate.Dto;
-using ExchangeRatePoller.Domain.Features.BnrExchangeRate.Dto;
-using ExchangeRatePoller.Domain.Features.BnrExchangeRate.Services;
+using ExchangeRate.DataAccess;
+using ExchangeRate.Dto;
+using ExchangeRate.Domain.Dto;
+using ExchangeRate.Domain.Services;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
@@ -24,7 +24,7 @@ namespace ExchangeRatePoller.ExchangeRateImporter
             this._exchangeRateRepository = exchangeRateRepository;
         }
 
-        private async Task InsertExchangeRates(CubeDto cubeDto, IList<Domain.Features.BnrExchangeRate.Models.Rate> domainCubeRates)
+        private async Task InsertExchangeRates(CubeDto cubeDto, IList<ExchangeRate.Domain.Models.Rate> domainCubeRates)
         {
             for (int i = 0; i < domainCubeRates.Count; i++)
             {
@@ -32,7 +32,7 @@ namespace ExchangeRatePoller.ExchangeRateImporter
 
                 if (currency == null)
                 {
-                    currency = this._mapper.Map<Domain.Features.BnrExchangeRate.Models.Currency, CurrencyDto>(domainCubeRates[i].Currency);
+                    currency = this._mapper.Map<ExchangeRate.Domain.Models.Currency, CurrencyDto>(domainCubeRates[i].Currency);
                     await _exchangeRateRepository.InsertCurrency(currency);
                 }
 
@@ -57,8 +57,8 @@ namespace ExchangeRatePoller.ExchangeRateImporter
 
                 foreach (var cube in dataSet.Body.Cubes)
                 {
-                    var domainCube = this._mapper.Map<Cube, Domain.Features.BnrExchangeRate.Models.Cube>(cube);
-                    var cubeDto = this._mapper.Map<Domain.Features.BnrExchangeRate.Models.Cube, CubeDto>(domainCube);
+                    var domainCube = this._mapper.Map<Cube, ExchangeRate.Domain.Models.Cube>(cube);
+                    var cubeDto = this._mapper.Map<ExchangeRate.Domain.Models.Cube, CubeDto>(domainCube);
 
                     var domainCubeRates = domainCube.Rates;
 
