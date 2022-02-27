@@ -3,13 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeRatePoller.Domain", "ExchangeRatePoller.Domain\ExchangeRatePoller.Domain.csproj", "{377FCE8B-A0ED-4EEE-AE20-E2BE777E45C9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeRatePoller.DataAccess", "ExchangeRatePoller.DataAccess\ExchangeRatePoller.DataAccess.csproj", "{78766A06-7606-4F65-8C61-C61FF8385DBB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeRatePoller.ExchangeRateImporter", "ExchangeRatePoller.ExchangeRateImporter\ExchangeRatePoller.ExchangeRateImporter.csproj", "{048DE2EC-A202-4874-8E48-48CB01962BEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeRatePoller.AzureFunction", "ExchangeRatePoller.AzureFunction\ExchangeRatePoller.AzureFunction.csproj", "{EB5E71D1-D5AA-4357-A736-622E437CB220}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeRatePoller.AzureFunction", "ExchangeRatePoller.AzureFunction\ExchangeRatePoller.AzureFunction.csproj", "{EB5E71D1-D5AA-4357-A736-622E437CB220}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,14 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{377FCE8B-A0ED-4EEE-AE20-E2BE777E45C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{377FCE8B-A0ED-4EEE-AE20-E2BE777E45C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{377FCE8B-A0ED-4EEE-AE20-E2BE777E45C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{377FCE8B-A0ED-4EEE-AE20-E2BE777E45C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{78766A06-7606-4F65-8C61-C61FF8385DBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{78766A06-7606-4F65-8C61-C61FF8385DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{78766A06-7606-4F65-8C61-C61FF8385DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{78766A06-7606-4F65-8C61-C61FF8385DBB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{048DE2EC-A202-4874-8E48-48CB01962BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{048DE2EC-A202-4874-8E48-48CB01962BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{048DE2EC-A202-4874-8E48-48CB01962BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
