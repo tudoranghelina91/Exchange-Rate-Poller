@@ -30,6 +30,12 @@ stages:
       vmImage: $(vmImageName)
 
     steps:
+    - task: NuGetCommand@2
+      inputs:
+        command: 'restore'
+        restoreSolution: '$(System.DefaultWorkingDirectory)/src/*.sln'
+        feedsToUse: 'select'
+        vstsFeed: 'b1d97725-5f4c-4e80-b25a-22ddd7688077/17bc51d8-70a9-48a0-8b0c-ea89dd173c2c'
     - task: DotNetCoreCLI@2
       displayName: Build
       inputs:
